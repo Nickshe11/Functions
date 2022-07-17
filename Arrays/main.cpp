@@ -1,8 +1,10 @@
 ﻿//Arrays
 #include<iostream>
+#include<conio.h>
 using namespace std;
 
 #define tab "\t"
+#define delimiter "_____________________________________"
 const int ROWS = 3;
 const int COLS = 4;
 
@@ -19,6 +21,7 @@ void Sort(double arr[], const int n);
 
 int Sum(int arr[], const int n);
 double Sum(double arr[], const int n);
+int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 double Avg(int arr[], const int n);
 double Avg(double arr[], const int n);
@@ -60,10 +63,14 @@ void main()
 	Sort(brr, SIZE);
 	Print(brr, SIZE);
 
-	
+	cout << delimiter << endl;
+
 	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
+	cout << "Сумма элементов массива = " << Sum(i_arr_2,ROWS,COLS) << endl;
+
+	cout << delimiter << endl;
 }
 
 
@@ -84,6 +91,14 @@ void FillRand(double arr[], const int n)
 	}
 }
 
+void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for(int j =0;j<COLS;j++) arr[i][j] = rand() % 100;
+	}
+}
+
 void Print(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
@@ -100,6 +115,18 @@ void Print(double arr[], const int n)
 		cout << arr[i] << tab;
 	}
 	cout << endl;
+}
+
+void Print(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << tab;
+		}
+		cout << endl;
+	}
 }
 
 void Sort(int arr[], const int n)
@@ -145,6 +172,16 @@ double Sum(double arr[], const int n)
 {
 	double sum = 0;
 	for (int i = 0; i < n; i++)	sum += arr[1];
+	return sum;
+}
+
+int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++) sum += arr[i][j];
+	}
 	return sum;
 }
 
