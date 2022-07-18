@@ -1,6 +1,6 @@
 ﻿//Arrays
 #include<iostream>
-#include<conio.h>
+
 using namespace std;
 
 #define tab "\t"
@@ -25,12 +25,19 @@ int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 double Avg(int arr[], const int n);
 double Avg(double arr[], const int n);
+double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int minValueIn(int arr[], const int n);
+int minValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
+
 int maxValueIn(int arr[], const int n);
+int maxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void shiftLeft(int arr[], const int n, int turn);
+void shiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int turn);
+
 void shiftRight(int arr[], const int n, int turn);
+void shiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int turn);
 
 void main()
 {
@@ -56,21 +63,34 @@ void main()
 	shiftRight(arr, n, turnR);
 	Print(arr, n);*/
 
-	const int SIZE = 8;
+	/*const int SIZE = 8;
 	double brr[SIZE];
 	FillRand(brr, SIZE);
 	Print(brr, SIZE);
 	Sort(brr, SIZE);
-	Print(brr, SIZE);
+	Print(brr, SIZE);*/
 
 	cout << delimiter << endl;
 
 	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
-	cout << "Сумма элементов массива = " << Sum(i_arr_2,ROWS,COLS) << endl;
-
+	cout << "Сумма элементов массива = " << Sum(i_arr_2, ROWS, COLS) << endl;
+	cout << "Среднее арифметическое элементов массива = " << Avg(i_arr_2, ROWS, COLS) << endl;
+	cout << "Минимальное значение элементов массива = " << minValueIn(i_arr_2, ROWS, COLS) << endl;
+	cout << "Максимальное значение элементов массива = " << maxValueIn(i_arr_2, ROWS, COLS) << "\n" << endl;
+	cout << endl;
+	cout << "Введите количество смещений элементов массива влево" << endl; cin >> turn;
+	cout << tab << tab << tab << "Смещение влево на " << turn << " элементов" << endl;
+	shiftLeft(i_arr_2, ROWS, COLS, turn);
+	Print(i_arr_2, ROWS, COLS);
+	cout << endl;
+	cout << "Введите количество смещений элементов массива вправо" << endl; cin >> turnR;
+	cout << tab << tab << tab << "Смещение вправо на " << turnR << " элементов" << endl;
+	shiftRight(i_arr_2, ROWS, COLS, turnR);
+	Print(i_arr_2, ROWS, COLS);
 	cout << delimiter << endl;
+
 }
 
 
@@ -95,7 +115,7 @@ void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	for (int i = 0; i < ROWS; i++)
 	{
-		for(int j =0;j<COLS;j++) arr[i][j] = rand() % 100;
+		for (int j = 0; j < COLS; j++) arr[i][j] = rand() % 100;
 	}
 }
 
@@ -188,13 +208,21 @@ int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS)
 
 double Avg(int arr[], const int n)
 {
-	return (double)Sum(arr,n)/n;
+	return (double)Sum(arr, n) / n;
 }
 
 double Avg(double arr[], const int n)
 {
-	return (double)Sum(arr,n)/n;
+	return (double)Sum(arr, n) / n;
 }
+
+double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	{
+		return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
+	}
+}
+
 
 
 int minValueIn(int arr[], const int n)
@@ -210,6 +238,23 @@ int minValueIn(int arr[], const int n)
 	return min;
 }
 
+int minValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int min = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (min > arr[i][j])
+			{
+				min = arr[i][j];
+			}
+		}
+	}
+	return min;
+}
+
+
 int maxValueIn(int arr[], const int n)
 {
 	int max = arr[0];
@@ -218,6 +263,22 @@ int maxValueIn(int arr[], const int n)
 		if (max < arr[i])
 		{
 			max = arr[i];
+		}
+	}
+	return max;
+}
+
+int maxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int max = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (max < arr[i][j])
+			{
+				max = arr[i][j];
+			}
 		}
 	}
 	return max;
@@ -237,6 +298,27 @@ void shiftLeft(int arr[], const int n, int turn)
 
 }
 
+void shiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int turn)
+{
+	for (int k = 0; k < turn; k++)
+	{
+		int box = arr[0][0];
+		for (int i = 0; i < ROWS; i++)
+		{
+			for (int j = 1; j < COLS; j++)
+			{
+				arr[i][j-1] = arr[i][j];
+			}
+			if (i < ROWS - 1)
+			{
+				arr[i][COLS - 1] = arr[i + 1][0];
+			}
+		}
+		arr[ROWS - 1][COLS - 1] = box;
+	}
+}
+
+
 void shiftRight(int arr[], const int n, int turn)
 {
 	for (int j = 0; j < turn; j++)
@@ -248,5 +330,22 @@ void shiftRight(int arr[], const int n, int turn)
 			arr[i] = arr[i - 1];
 		}
 		arr[0] = box;
+	}
+}
+
+void shiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int turn)
+{
+	for (int k = 0; k < turn; k++)
+	{
+		int box = arr[ROWS - 1][COLS - 1];
+		for (int i = ROWS - 1; i >= 0; i--)
+		{
+			for (int j = COLS - 1; j > 0; j--)
+			{
+				arr[i][j] = arr[i][j - 1];
+			}
+			arr[i][0] = arr[i - 1][COLS - 1];
+		}
+		arr[0][0] = box;
 	}
 }
