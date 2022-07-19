@@ -768,6 +768,6 @@ void shiftRight(char arr[ROWS][COLS], const int ROWS, const int COLS, int turn)
 			}
 			arr[i][0] = arr[i - 1][COLS - 1];
 		}
-		arr[0][0] = box;
+		arr[0][0] = box; 
 	}
 }
