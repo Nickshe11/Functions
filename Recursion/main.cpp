@@ -4,6 +4,7 @@ using namespace std;
 
 void elevator(int floor);
 void fibonachi(int a, int b, int i);
+int factorio(int num, int box, int i);
 
 void main()
 {
@@ -12,8 +13,13 @@ void main()
 	/*int floor;
 	cout << "¬ведите номер этажа: "; cin >> floor;
 	elevator(floor);*/
-	int first = 0, sec = 1, i = 0;
-	fibonachi(first, sec, i);
+	int num, box=0;
+	int first = 0, sec = 1, i = 1;
+	cout << "¬ведите число дл€ вычислени€ факториала: "; cin >> num;
+	factorio(num, box, i);
+	cout << "‘акториал числа " << num << " = " << box;
+
+	//fibonachi(first, sec, i);
 }
 
 void elevator(int floor)
@@ -30,10 +36,19 @@ void elevator(int floor)
 
 void fibonachi(int a, int b, int i)
 {
-	if (i == 20)
+	if (i == 21)
 	{
 		return;
 	}
-	cout << a << tab ; i++;
+	cout << a << tab; i++;
 	fibonachi(b, a + b, i);
+}
+
+int factorio(int num, int box, int i)
+{
+	if (i >= num)
+	{
+		return box;
+	}
+	factorio(num, i*(i+1), i+2);
 }
