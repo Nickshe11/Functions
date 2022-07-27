@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #define tab "\t"
 using namespace std;
 
@@ -13,24 +13,24 @@ void main()
 	setlocale(LC_ALL, "");
 	//cout << "Hello world";
 	/*int floor;
-	cout << "Ââåäèòå íîìåð ýòàæà: "; cin >> floor;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ ÑÑ‚Ð°Ð¶Ð°: "; cin >> floor;
 	elevator(floor);*/
 	int num, counter = 1;
 	double box = 1;
-	cout << "Ââåäèòå ÷èñëî äëÿ âû÷èñëåíèÿ ôàêòîðèàëà: "; cin >> num;
-	cout << "Ôàêòîðèàë ÷èñëà " << num << " = " << factorio(num, box, counter) << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾ Ð´Ð»Ñ Ð²Ñ‹Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸Ñ Ñ„Ð°ÐºÑ‚Ð¾Ñ€Ð¸Ð°Ð»Ð°: "; cin >> num;
+	cout << "Ð¤Ð°ÐºÑ‚Ð¾Ñ€Ð¸Ð°Ð» Ñ‡Ð¸ÑÐ»Ð° " << num << " = " << factorio(num, box, counter) << endl;
 
 	int pow;
-	cout << "Ââåäèòå ÷èñëî äëÿ âîçâåäåíèÿ â ñòåïåíü: "; cin >> num;
-	cout << "Ââåäèòå çíà÷åíèå ñòåïåíè: "; cin >> pow;
-	cout << "Ðåçóëüòàò âîçâåäåíèÿ ÷èñëà " << num << " â ñòåïåíü " << pow << " = " << Power(num, pow, counter - 1, box) << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾ Ð´Ð»Ñ Ð²Ð¾Ð·Ð²ÐµÐ´ÐµÐ½Ð¸Ñ Ð² ÑÑ‚ÐµÐ¿ÐµÐ½ÑŒ: "; cin >> num;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÑ‚ÐµÐ¿ÐµÐ½Ð¸: "; cin >> pow;
+	cout << "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð²Ð¾Ð·Ð²ÐµÐ´ÐµÐ½Ð¸Ñ Ñ‡Ð¸ÑÐ»Ð° " << num << " Ð² ÑÑ‚ÐµÐ¿ÐµÐ½ÑŒ " << pow << " = " << Power(num, pow, counter - 1, box) << endl;
 
 	int first = 0, sec = 1, number;
 	double limit;
-	cout << "Ââåäèòå êîëè÷åñòâî ÷èñåë â ðÿäå Ôèáîíà÷÷è: "; cin >> number;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‡Ð¸ÑÐµÐ» Ð² Ñ€ÑÐ´Ðµ Ð¤Ð¸Ð±Ð¾Ð½Ð°Ñ‡Ñ‡Ð¸: "; cin >> number;
 	fibonachi(first, sec, counter - 1, number);
 	cout << endl;
-	cout << "Ââåäèòå ïðåäåë äëÿ ðÿäà Ôèáîíà÷÷è: "; cin >> limit;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ñ€ÐµÐ´ÐµÐ» Ð´Ð»Ñ Ñ€ÑÐ´Ð° Ð¤Ð¸Ð±Ð¾Ð½Ð°Ñ‡Ñ‡Ð¸: "; cin >> limit;
 	fibonachi(first, sec, counter - 1, limit);
 
 }
@@ -39,12 +39,12 @@ void elevator(int floor)
 {
 	if (floor == 0)
 	{
-		cout << "Âû â ïîäâàëå" << endl;
+		cout << "Ð’Ñ‹ Ð² Ð¿Ð¾Ð´Ð²Ð°Ð»Ðµ" << endl;
 		return;
 	}
-	cout << "Âû íà " << floor << " ýòàæå\n";
+	cout << "Ð’Ñ‹ Ð½Ð° " << floor << " ÑÑ‚Ð°Ð¶Ðµ\n";
 	elevator(floor - 1);
-	cout << "Âû íà " << floor << " ýòàæå\n";
+	cout << "Ð’Ñ‹ Ð½Ð° " << floor << " ÑÑ‚Ð°Ð¶Ðµ\n";
 }
 
 int factorio(int num, double box, int i)
