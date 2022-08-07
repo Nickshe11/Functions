@@ -3,8 +3,8 @@
 using namespace std;
 
 void elevator(int floor);
-int factorio(int num, double box, int i);
-double Power(int num, int pow, int i, double box);
+int factorio(int num, int i);
+double Power(double num, int pow, int i);
 void fibonachi(int a, int b, int i, int counter);
 void fibonachi(int a, int b, int i, double lim);
 
@@ -15,15 +15,16 @@ void main()
 	/*int floor;
 	cout << "Введите номер этажа: "; cin >> floor;
 	elevator(floor);*/
-	int num, counter = 1;
-	double box = 1;
+	double num;
 	cout << "Введите число для вычисления факториала: "; cin >> num;
-	cout << "Факториал числа " << num << " = " << factorio(num, box, counter) << endl;
+	int counter = num - 1;
+	cout << "Факториал числа " << num << " = " << factorio(num, counter) << endl;
 
 	int pow;
+	counter = 1;
 	cout << "Введите число для возведения в степень: "; cin >> num;
 	cout << "Введите значение степени: "; cin >> pow;
-	cout << "Результат возведения числа " << num << " в степень " << pow << " = " << Power(num, pow, counter - 1, box) << endl;
+	cout << "Результат возведения числа " << num << " в степень " << pow << " = " << Power(num, pow, counter) << endl;
 
 	int first = 0, sec = 1, number;
 	double limit;
@@ -47,33 +48,33 @@ void elevator(int floor)
 	cout << "Вы на " << floor << " этаже\n";
 }
 
-int factorio(int num, double box, int i)
+int factorio(int num, int i)
 {
-	if (i > num)
+	if (i <= 0)
 	{
-		return box;
+		return num;
 	}
-	factorio(num, box * i, i + 1);
+	factorio(num * i, i - 1);
 }
 
-double Power(int num, int pow, int i, double box)
+double Power(double num, int pow, int i)
 {
 	if (pow < 0)
 	{
 		if (i == -pow)
 		{
-			box = 1 / box;
-			return box;
+			num = 1 / (double)num;
+			return num;
 		}
 	}
 	else
 	{
 		if (i == pow)
 		{
-			return box;
+			return num;
 		}
 	}
-	Power(num, pow, i + 1, box * num);
+	Power(num * (num / (num / 2)), pow, i + 1);
 }
 
 void fibonachi(int a, int b, int i, int counter)
