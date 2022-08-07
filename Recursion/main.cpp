@@ -59,6 +59,11 @@ int factorio(int num, int i)
 
 double Power(double num, int pow, int i)
 {
+	if (pow == 0)
+	{
+		num = 1;
+		return num;
+	}
 	if (pow < 0)
 	{
 		if (i == -pow)
